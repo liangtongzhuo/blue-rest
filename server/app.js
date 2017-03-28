@@ -6,22 +6,25 @@ require('./config');
 require('./init/mongoose');
 
 const express = require('express');
+const bodyParser = require('body-parser')
 const router = require('./routes/index.js');
 
 const app = express();
 
-
+//解析 body
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+app.use(bodyParser.json());
 //rest Api
 app.use('/', router);
 
-
-// app.use(function(err, req, res, next) {
-//     //将异常堆栈输出到页面，方便开发调试
-//     res.render('error', {
-//         message: err.message,
-//         error: err
-//     });
-// });
+app.use(function(err, req, res, next) {
+    //将异常堆栈输出，方便开发调试
+    res.json({
+        'error': err
+    });
+});
 
 
 app.listen(8080, function() {

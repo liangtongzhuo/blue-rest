@@ -1,15 +1,28 @@
 'use strict';
 
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
+//根据设计数据库对象加载进来。
+const arrarObject = require('./models.js');
+
+for (var key in arrarObject) {
+    if (arrarObject.hasOwnProperty(key)) {
+        //根据对象，且建立 schema，定义了数据模型，比如：字段名和类型。
+        const schema = new Schema(arrarObject[key]);
+        //绑定：schema ，注册为model,有了操作数据库的能力。
+        mongoose.model(key, schema);
+    }
+}
 
 
-//根据collection加载 model
-function loadModel(collection) {
-    return require('./' + collection + '.js');
+//根据 collection ,返回模型
+function collection(collection) {
+    const model = mongoose.model(collection);
+    return model;
 };
 
-module.exports = loadModel;
-
-
+module.exports = collection;
 
 // model.find({}, null, {
 //     skip: 3,
