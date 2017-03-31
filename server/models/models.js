@@ -13,7 +13,4 @@ arrarObject["student"] = {
     }
 };
 //<--/样板-->
-
-
-
 module.exports = arrarObject;

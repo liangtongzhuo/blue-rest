@@ -1,5 +1,6 @@
+const config = require('../config.js');
 const mongoose = require('mongoose');
-const db = mongoose.connect(global._config.mongodb);
+const db = mongoose.connect(config.mongodb);
 
 db.connection.on('error', function() {
     console.log('___db：error');

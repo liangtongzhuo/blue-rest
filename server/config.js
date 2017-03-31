@@ -2,6 +2,6 @@
 
 const config = {
     port: 3000,
-    mongodb: 'mongodb://localhost:27017/school'
+    mongodb: 'mongodb://localhost:27017/mini'
 }
-global._config = config;
+exports.module = config;

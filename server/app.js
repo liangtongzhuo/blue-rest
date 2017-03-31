@@ -1,7 +1,7 @@
 'use strict';
 
 //全局配置
-require('./config');
+const config = require('./config.js');
 //初始化，连结数据库
 require('./init/mongoose');
 
@@ -26,7 +26,6 @@ app.use(function(err, req, res, next) {
     });
 });
 
-
-app.listen(8080, function() {
+app.listen(config.port, function() {
     console.log('___server start');
 });

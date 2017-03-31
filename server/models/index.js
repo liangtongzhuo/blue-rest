@@ -16,13 +16,13 @@ for (var key in arrarObject) {
 }
 
 
-//根据 collection ,返回模型
-function collection(collection) {
-    const model = mongoose.model(collection);
+//根据 tab ,返回模型
+function tab(tab) {
+    const model = mongoose.model(tab);
     return model;
 };
 
-module.exports = collection;
+module.exports = tab;
 
 // model.find({}, null, {
 //     skip: 3,
