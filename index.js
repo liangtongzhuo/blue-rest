@@ -3,4 +3,3 @@
 require('./server/app.js');
 
 
-console.log('aaaa');
