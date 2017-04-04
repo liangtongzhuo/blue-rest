@@ -1,6 +1,5 @@
 ## Node 搭建的 Restful 的风格的 API 服务器，搭配的数据库为：mongodb
 
-aaaaaaa
 
 - 主要实现内容有：
 	- Restful的约定风格
