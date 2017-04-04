@@ -26,6 +26,7 @@ app.use(function(err, req, res, next) {
     });
 });
 
+
 app.listen(config.port, function() {
     console.log('___server start');
 });
