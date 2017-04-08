@@ -1,10 +1,9 @@
 'use strict';
 
-//全局配置
-const config = require('./config.js');
 //初始化，连结数据库
 require('./init/mongoose');
-
+//加载配置
+const config = require('./config.js');
 const express = require('express');
 const bodyParser = require('body-parser')
 const router = require('./routes/index.js');
@@ -19,7 +18,7 @@ app.use(bodyParser.json());
 //rest Api
 app.use('/', router);
 
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
     //将异常堆栈输出，方便开发调试
     res.json({
         'error': err
@@ -27,6 +26,6 @@ app.use(function(err, req, res, next) {
 });
 
 
-app.listen(config.port, function() {
+app.listen(config.port, function () {
     console.log('___server start');
 });

@@ -14,12 +14,23 @@ URL | 	HTTP | 功能
 /tab/objectId | PUT  | 更新对象
 /tab/objectId | DELETE  | 删除对象
 
+---
 
+0.8 实现Population 
 
+---
 
+0.7 查询端口实现数字大于、小于、等于、不等于的数字查询。
+gt lt gte lte ne
 
+---
+0.6 查询端口实现字符串根据「 正则表达式 」查询。
+\_where={name:{"_regex":"^你"}}
 
+---
+0.5 思想总结、代码设计、接口设计、写一些demo、看文档。
 
+---
 0.4 错误堆栈抛向前台。
 
 ---

@@ -1,16 +1,27 @@
 'use strict';
 
-let arrarObject = {};
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-//<--样板-->
-arrarObject["student"] = {
+const student = {
     name: String,
     age: Number,
     sex: String,
+    xuexiao: {
+        type: Schema.Types.ObjectId,
+        ref: 'school' 
+    },
     score: {
         shuxue: Number,
         yuwen: Number
     }
 };
-//<--/样板-->
-module.exports = arrarObject;
+
+mongoose.model('student', new Schema(student));
+
+
+const school = {
+    title: String
+};
+
+mongoose.model('school', new Schema(school));
