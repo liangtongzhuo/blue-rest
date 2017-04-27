@@ -5,7 +5,7 @@
 const tab = require('../models/index.js')
 
 //创建 - 根据：查询条件，并返回json对象
-function get(req, res, next) {
+const get = function(req, res, next) {
     let where = req.query._where;
     const sort = req.query._sort || {};
     const skip = parseInt(req.query._skip, 10) || 0;
@@ -46,7 +46,7 @@ function get(req, res, next) {
         .skip(skip)
         .limit(limit)
         .populate(populte)
-        .exec(function (err, docs) {
+        .exec(function(err, docs) {
             if (err) {
                 next(err);
                 return;
@@ -56,11 +56,11 @@ function get(req, res, next) {
 }
 
 //创建 - 根据：req.body创建数据，并返回json对象
-function post(req, res, next) {
+const post = function(req, res, next) {
     const Model = tab(req.params.tab);
     const doc = req.body
     const entity = new Model(doc);
-    entity.save(function (err, doc) {
+    entity.save(function(err, doc) {
         if (err) {
             next(err);
             return;
@@ -73,12 +73,12 @@ function post(req, res, next) {
 // router.route('/:tab/:objectid')
 
 //id查询 - 根据：tab和id，返回对应json
-function getId(req, res, next) {
+const getId = function(req, res, next) {
     const populte = req.query._populte || '';
     tab(req.params.tab)
         .findById(req.params.objectid)
         .populate(populte)
-        .exec(function (err, doc) {
+        .exec(function(err, doc) {
             if (err) {
                 next(err);
                 return;
@@ -88,14 +88,16 @@ function getId(req, res, next) {
 }
 
 //id修改 - 根据：tab、id和属性，修改对象，并且返回json
-function putId(req, res, next) {
+const putId = function(req, res, next) {
     const populte = req.query._populte || '';
     tab(req.params.tab)
         .findByIdAndUpdate(req.params.objectid, {
             $set: req.body
-        }, { new: true })
+        }, {
+            new: true
+        })
         .populate(populte)
-        .exec(function (err, doc) {
+        .exec(function(err, doc) {
             if (err) {
                 next(err);
                 return;
@@ -105,9 +107,9 @@ function putId(req, res, next) {
 }
 
 //id删除 - 根据：tab和id删除，返回json
-function deleteId(req, res, next) {
+const deleteId = function(req, res, next) {
     tab(req.params.tab).findByIdAndRemove(req.params.objectid)
-        .exec(function (err, doc) {
+        .exec(function(err, doc) {
             if (err) {
                 next(err);
                 return;
