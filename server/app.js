@@ -5,7 +5,7 @@ require('./init/mongoose');
 //加载配置
 const config = require('./config.js');
 const express = require('express');
-const mini_rest = require('./routes/index.js');
+const router = require('./routes/router.js');
 
 const app = express();
 
