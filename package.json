@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hi363138911/node-api-server.git"
+    "url": "git+https://github.com/hi363138911/mini-rest.git"
   },
   "keywords": [
     "restful",
@@ -18,9 +18,9 @@
   ],
   "author": "liangtongzhuo",
   "bugs": {
-    "url": "https://github.com/hi363138911/node-api-server/issues"
+    "url": "https://github.com/hi363138911/mini-rest/issues"
   },
-  "homepage": "https://github.com/hi363138911/node-api-server#readme",
+  "homepage": "http://www.liangtongzhuo.com",
   "dependencies": {
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
