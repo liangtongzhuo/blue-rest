@@ -5,15 +5,10 @@ require('./init/mongoose');
 //加载配置
 const config = require('./config.js');
 const express = require('express');
-const router = require('./routes/index.js');
+const mini_rest = require('./routes/index.js');
 
 const app = express();
 
-//解析 body
-// app.use(bodyParser.urlencoded({
-    // extended: true
-// }));
-// app.use(bodyParser.json());
 //rest Api
 app.use('/', router);
 
