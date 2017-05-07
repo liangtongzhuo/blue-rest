@@ -1,6 +1,7 @@
 'use strict';
 
 const rest = require('../controller/rest.js');
+const bodyParser = require('body-parser')
 const express = require('express');
 const router = express.Router();
 
@@ -8,6 +9,13 @@ const router = express.Router();
 // console.log(req.params);
 // console.log(req.query);
 // console.log(req.body);
+
+//解析 body
+router.use(bodyParser.json());
+router.use(bodyParser.urlencoded({
+    extended: false
+}));
+
 //无id
 router.route('/:tab')
     .get(function (req, res, next) {
