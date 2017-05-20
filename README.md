@@ -1,9 +1,9 @@
 ## Node 搭建的 Restful 的风格的 API 服务器，搭配的数据库为：mongodb
 
 
+
 - 主要实现内容有：
 	- Restful的约定风格
-
 
 
 URL | 	HTTP | 功能
@@ -13,6 +13,12 @@ URL | 	HTTP | 功能
 /tab/objectId | GET  | 获取对象
 /tab/objectId | PUT  | 更新对象
 /tab/objectId | DELETE  | 删除对象
+
+
+---
+0.9 例子
+
+
 
 ---
 
