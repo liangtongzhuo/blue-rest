@@ -1,9 +1,9 @@
 'use strict';
 
-const rest = require('../controller/rest.js');
+const rest = require('./controller/rest.js');
 const bodyParser = require('body-parser')
-const express = require('express');
-const router = express.Router();
+const router = require('express').Router();
+
 
 
 // console.log(req.params);

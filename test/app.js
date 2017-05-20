@@ -5,9 +5,11 @@ require('./init/mongoose');
 //加载配置
 const config = require('./config.js');
 const express = require('express');
-const router = require('./routes/router.js');
+const router = require('../ltz-rest');
 
 const app = express();
+
+
 
 //rest Api
 app.use('/', router);

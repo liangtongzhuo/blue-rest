@@ -1,8 +1,12 @@
 'use strict'
-/**
- * 引入表
- */
-const tab = require('../models/index.js')
+const mongoose = require('mongoose');
+
+//根据 tab名字 ,返回模型
+const tab = function(tab) {
+    const model = mongoose.model(tab);
+    return model;
+};
+
 
 //创建 - 根据：查询条件，并返回json对象
 const get = function(req, res, next) {
