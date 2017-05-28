@@ -74,7 +74,6 @@ const post = function(req, res, next) {
 }
 
 //有id
-// router.route('/:tab/:objectid')
 
 //id查询 - 根据：tab和id，返回对应json
 const getId = function(req, res, next) {
