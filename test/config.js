@@ -2,7 +2,7 @@
 
 const config = {
     port: 3000,
-    mongodb: 'mongodb://localhost:27017/mini'
+    mongodb: 'mongodb://127.0.0.1:27017/test'
 }
 
 module.exports = config;
