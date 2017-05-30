@@ -192,6 +192,9 @@ http://localhost:3000/student/592a33bf1b84a41131db2f55
 ```
 
 ---
+1.0 实现功能，配置是否跳过中间件。
+
+0.9 书写文档，并且发布NPM
 
 0.8 实现Population 
 

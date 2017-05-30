@@ -19,12 +19,12 @@ const app = express();
 const rest = require('../ltz-rest');
 app.use('/', rest);
 
-app.use(function(err, req, res, next) {
-    //将异常堆栈输出，方便开发调试
-    res.json({
-        'error': err
-    });
-});
+// app.use(function(err, req, res, next) {
+//     //将异常堆栈输出，方便开发调试
+//     res.json({
+//         'error': err
+//     });
+// });
 
 app.listen(3000, function() {
     console.log('___server start');
@@ -55,3 +55,14 @@ const school = {
 };
 
 mongoose.model('school', new Schema(school));
+
+
+//是否，跳过中间件。
+rest.skip = {
+    'student':'ALL',
+    'school': 'GET'
+}
+
+app.use(function(req,res){
+    res.send('skip');
+})
