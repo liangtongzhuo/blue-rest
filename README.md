@@ -2,8 +2,7 @@
 
 
 
-- 主要实现内容有：
-	- Restful的约定风格
+- 中间件自动生成： restful的约定风格API
 
 
 URL | 	HTTP | 功能
@@ -27,15 +26,6 @@ npm install "ltz-rest" --save
 
 const mongoose = require('mongoose');
 const db = mongoose.connect('mongodb://127.0.0.1:27017/test');
-db.Promise = global.Promise;
-
-db.connection.on('error', function(error) {
-    console.log('___db：error');
-});
-
-db.connection.on('open', function() {
-    console.log('___db:open');
-});
 
 const express = require('express');
 const app = express();
@@ -44,11 +34,9 @@ const app = express();
 const rest = require('ltz-rest');
 app.use('/', rest);
 
-app.listen(3000, function () {
-    console.log('___server start');
-});
+app.listen(3000);
 
-//2.注册 mongoose 的模型
+
 const Schema = mongoose.Schema;
 
 const student = {
@@ -64,23 +52,26 @@ const student = {
         yuwen: Number
     }
 };
-
+//注册 mongoose 的模型
 mongoose.model('student', new Schema(student));
 
 const school = {
     title: String
 };
-
+//注册 mongoose 的模型
 mongoose.model('school', new Schema(school));
 
 ```
 
-### 由上面可知，我们有俩个注册模型。
-对于 POST 和 PUT 请求，请求的主体必须是 JSON 格式，而且 HTTP header 的 Content-Type 需要设置为 application/json
+### 由上面可知，我们有俩注册模型 student school , 这俩注册的模型都自动生成API
 
-1:POST 创建
+
+####__下面自动生成5个 API 的使用__
+
+1:POST 创建数据
 
 ```
+
 http://localhost:3000/student
 body 包含 JSON 数据
 {
@@ -108,12 +99,13 @@ body 包含 JSON 数据
   }
 }
 
+注意 POST，请求的主体必须是 JSON 格式，而且 HTTP header 的 Content-Type 需要设置为 application/json
 ```
 
 2:GET 查询，所有的特殊性关键词都是“_”开头
 
 ```
-查询 student 文档
+查询 student 文档，默认_limit=100
 http://localhost:3000/student
 
 查询 student 文档，限制一条和跳过一跳：_limit=1&_skip=1
@@ -133,7 +125,7 @@ http://localhost:3000/student?_where={"score.shuxue":{"_gt":90},"name":{"_regex"
 
 ```
 
-3:GET 根据唯一id 查询
+3:GET 根据唯一 id 查询
 
 ```
 查询 student 文档，唯一id 592a33bf1b84a41131db2f55 ，如果需要学校数据需要_populte
@@ -168,6 +160,7 @@ body 包含 JSON 数据
   }
 }
 
+注意 PUT，请求的主体必须是 JSON 格式，而且 HTTP header 的 Content-Type 需要设置为 application/json
 ```
 
 5:DELETE 根据唯一 id 删除数据
@@ -188,6 +181,20 @@ http://localhost:3000/student/592a33bf1b84a41131db2f55
     "shuxue": 99,
     "yuwen": 88
   }
+}
+```
+
+
+### 二、跳过 API
+跳过 API 的意思是:这个 API 是不会执行，但会调用 next，执行下一个中间件
+
+```
+// ALL：跳过所有的 API
+// GET：跳过 GET
+// 跳过的 API 有：GET,GETID,PUT,POST,DELETE
+rest.skip = {
+    'student':'ALL',//跳过 student 所有的API
+    'school': 'GET,GETID'//跳过 school 的 GET 与 GETID,其它的 PUT,POST,DELETE 正常执行。
 }
 ```
 
