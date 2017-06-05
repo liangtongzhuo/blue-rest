@@ -1,6 +1,14 @@
 ## Node 搭建的 Restful 的风格的 API 中间件，依赖于Express 和 Mongoose
 
 
+  <a title = "Building Status" href="https://travis-ci.org/Yuki-Minakami/PHelper">
+    <img src="https://travis-ci.org/Yuki-Minakami/PHelper.svg?branch=master">
+  </a>
+  <a title = "license" href="https://github.com/ellerbrock/open-source-badge/">
+      <img src="https://badges.frapsoft.com/os/mit/mit.svg?v=102">
+    </a>
+
+
 
 - 中间件自动生成： restful的约定风格API
 
@@ -66,7 +74,7 @@ mongoose.model('school', new Schema(school));
 ### 由上面可知，我们有俩注册模型 student school , 这俩注册的模型都自动生成API
 
 
-####__下面自动生成5个 API 的使用__
+__下面自动生成5个 API 的使用__
 
 1:POST 创建数据
 
@@ -186,16 +194,26 @@ http://localhost:3000/student/592a33bf1b84a41131db2f55
 
 
 ### 二、跳过 API
-跳过 API 的意思是:这个 API 是不会执行，但会调用 next，执行下一个中间件
+这个 API 是不会执行
 
 ```
 // ALL：跳过所有的 API
 // GET：跳过 GET
-// 跳过的 API 有：GET,GETID,PUT,POST,DELETE
+// 跳过的 API 有：GET,GETID,PUT,POST,DELETE，
 rest.skip = {
     'student':'ALL',//跳过 student 所有的API
     'school': 'GET,GETID'//跳过 school 的 GET 与 GETID,其它的 PUT,POST,DELETE 正常执行。
 }
+
+GET获取 school 文档
+http://localhost:3000/school
+执行失败，因为上面跳过GET
+
+DELETE school 文档删除
+http://localhost:3000/school/592a33bf1b84a41131db2f55
+执行成功，因为上面没有跳过 DELETE 。
+
+
 ```
 
 ---

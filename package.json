@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hi363138911/ltz-rest.git"
+    "url": "git+https://github.com/liangtongzhuo/ltz-rest.git"
   },
   "keywords": [
     "restful",
@@ -18,7 +18,7 @@
   ],
   "author": "liangtongzhuo",
   "bugs": {
-    "url": "https://github.com/hi363138911/ltz-rest/issues"
+    "url": "https://github.com/liangtongzhuo/ltz-rest/issues"
   },
   "homepage": "http://www.liangtongzhuo.com",
   "dependencies": {
