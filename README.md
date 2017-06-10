@@ -1,13 +1,15 @@
 ## Node 搭建的 Restful 的风格的 API 中间件，依赖于Express 和 Mongoose
 
+### 前言
 
-  <a title = "Building Status" href="https://travis-ci.org/Yuki-Minakami/PHelper">
-    <img src="https://travis-ci.org/Yuki-Minakami/PHelper.svg?branch=master">
-  </a>
-  <a title = "license" href="https://github.com/ellerbrock/open-source-badge/">
-      <img src="https://badges.frapsoft.com/os/mit/mit.svg?v=102">
-    </a>
+依赖 mongoose 注册模型，两句话实现 rest API
 
+```
+//1.引入框架
+const rest = require('ltz-rest');
+app.use('/', rest);
+
+```
 
 
 - 中间件自动生成： restful的约定风格API
@@ -23,7 +25,7 @@ URL | 	HTTP | 功能
 
 
 ---
-### 一、如何使用？
+### 一、详细如何使用？
 
 ```
 npm install "ltz-rest" --save
@@ -71,10 +73,10 @@ mongoose.model('school', new Schema(school));
 
 ```
 
-### 由上面可知，我们有俩注册模型 student school , 这俩注册的模型都自动生成API
+由上面可知，我们有俩注册模型 student school , 这俩注册的模型都自动生成API；本插件依赖 mongoose ，只有注册到mongoose.model() 才会自动生成 API
 
 
-__下面自动生成5个 API 的使用__
+__下面自动生成 student 5个 API 的使用__
 
 1:POST 创建数据
 
@@ -119,32 +121,39 @@ http://localhost:3000/student
 查询 student 文档，限制一条和跳过一跳：_limit=1&_skip=1
 http://localhost:3000/student?_limit=1&_skip=1
 
-查询 student 文档，数字大于、小于、等于、不等于的数字查询；_gt _lt _gte _lte _ne
+查询 student 文档，数字大于、小于、大于等于、小于等于、不等于的数字查询；_gt _lt _gte _lte _ne
 http://localhost:3000/student?_where={"score.shuxue":{"_gt":90}} //score.shuxue 大于90的
 
 查询 student 文档，字符串根据「 正则表达式 」查询。 "_regex":"^李"，"_regex":"李"，"_regex":"李$"，名字开头带李,名字有李，名字结尾是李
 http://localhost:3000/student?_where={"name":{"_regex":"^李"}} //名字开头带"李"
 
 查询 student 文档，连表的显示。 也就说xuexiao查询出来不是id，查询出来的是相应的文档
-http://localhost:3000/student?_populte=xuexiao
+http://localhost:3000/student?_populate=xuexiao
 
 来一个综合例子：查询 student 文档，score.shuxue 大于90且 name 带“李”，xuexiao 连表显示，限制一条数据。
-http://localhost:3000/student?_where={"score.shuxue":{"_gt":90},"name":{"_regex":"李"}}&_populte=xuexiao&_limit=1
+http://localhost:3000/student?_where={"score.shuxue":{"_gt":90},"name":{"_regex":"李"}}&_populate=xuexiao&_limit=1
 
 ```
+特殊关键词_ | 	功能 | 演示
+----|------|----
+_limit | 限制  | _limit=10，限制返回10条数据
+_skip | 跳过  | _skip=10，跳过10条数据
+_gt、_lt、_gte、_lte、_ne | 限制数字：大于、小于、大于等于、小于等于、不等于 | \_gt=10，大于10、_ne=20，不等于20
+_regex | 字符串根据「 正则表达式 」查询  | {"_regex":"^李"}，名字开头带"李"
+_populate| 连表数据返回  | \_populate=xuexiao，显示 xuexiao 数据，也可以用"."显示更深层的数据：_populate=xuexiao.local，可以把 xuexiao.local 的数据也展示出来
 
 3:GET 根据唯一 id 查询
 
 ```
-查询 student 文档，唯一id 592a33bf1b84a41131db2f55 ，如果需要学校数据需要_populte
-http://localhost:3000/student/592a33bf1b84a41131db2f55?_populte=xuexiao
+查询 student 文档，唯一id 592a33bf1b84a41131db2f55 ，如果需要学校数据需要_populate
+http://localhost:3000/student/592a33bf1b84a41131db2f55?_populate=xuexiao
 ```
 
 4:PUT 根据唯一 id 更新数据
 
 ```
-修改数据 PUT， 年龄修改为18岁。 使用了 _populte 获取学校信息。
-http://localhost:3000/student/592a33bf1b84a41131db2f55?_populte=xuexiao
+修改数据 PUT， 年龄修改为18岁。 使用了 _populate 获取学校信息。
+http://localhost:3000/student/592a33bf1b84a41131db2f55?_populate=xuexiao
 body 包含 JSON 数据
 {
 	"age":18

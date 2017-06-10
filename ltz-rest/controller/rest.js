@@ -14,7 +14,7 @@ const get = function(req, res, next) {
     const sort = req.query._sort || {};
     const skip = parseInt(req.query._skip, 10) || 0;
     const limit = parseInt(req.query._limit, 10) || 100;
-    const populte = req.query._populte || '';
+    const populate = req.query._populate || '';
     if (where) {
         where = JSON.parse(where);
         for (var key in where) {
@@ -49,7 +49,7 @@ const get = function(req, res, next) {
         .sort(sort)
         .skip(skip)
         .limit(limit)
-        .populate(populte)
+        .populate(populate)
         .exec(function(err, docs) {
             if (err) {
                 next(err);
