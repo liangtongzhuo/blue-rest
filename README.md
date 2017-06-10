@@ -1,8 +1,12 @@
-## Node 搭建的 Restful 的风格的 API 中间件，依赖于Express 和 Mongoose
+## Node 搭建的 Restful 的风格的 API 插件，依赖于 Express 和 Mongoose
 
 ### 前言
 
-依赖 mongoose 注册模型，两句话实现 rest API
+```
+npm install "ltz-rest" --save
+```
+
+依赖 mongoose 注册模型，两句实现 rest API
 
 ```
 //1.引入框架
@@ -25,11 +29,8 @@ URL | 	HTTP | 功能
 
 
 ---
-### 一、详细如何使用？
+### 一、详细如何使用与演示？
 
-```
-npm install "ltz-rest" --save
-```
 
 ```
 'use strict';
@@ -138,7 +139,7 @@ http://localhost:3000/student?_where={"score.shuxue":{"_gt":90},"name":{"_regex"
 ----|------|----
 _limit | 限制  | _limit=10，限制返回10条数据
 _skip | 跳过  | _skip=10，跳过10条数据
-_gt、_lt、_gte、_lte、_ne | 限制数字：大于、小于、大于等于、小于等于、不等于 | \_gt=10，大于10、_ne=20，不等于20
+\_gt、\_lt、\_gte、\_lte、\_ne | 限制数字：大于、小于、大于等于、小于等于、不等于 | \_gt=10，大于10、_ne=20，不等于20
 _regex | 字符串根据「 正则表达式 」查询  | {"_regex":"^李"}，名字开头带"李"
 _populate| 连表数据返回  | \_populate=xuexiao，显示 xuexiao 数据，也可以用"."显示更深层的数据：_populate=xuexiao.local，可以把 xuexiao.local 的数据也展示出来
 
