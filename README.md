@@ -1,4 +1,4 @@
-## Node 搭建的 Restful 的风格的 API 插件，依赖于 Express 和 Mongoose
+## Node 搭建的 Restful 的风格的 API 中间件，依赖于 Express 和 Mongoose
 
 ### 前言
 
@@ -29,7 +29,7 @@ URL | 	HTTP | 功能
 
 
 ---
-### 一、详细如何使用与演示？
+### 一、详情使用
 
 
 ```
@@ -203,16 +203,16 @@ http://localhost:3000/student/592a33bf1b84a41131db2f55
 ```
 
 
-### 二、跳过 API
-这个 API 是不会执行
+### 二、跳过中间件
+这个请求中间件不会执行，并且调用 next，执行下一个中间件。
 
 ```
-// ALL：跳过所有的 API
-// GET：跳过 GET
-// 跳过的 API 有：GET,GETID,PUT,POST,DELETE，
+// ALL：跳过所有的 API 请求
+// GET：跳过 GET 请求
+// 5个 API：GET,GETID,PUT,POST,DELETE，可以任意选择跳过。
 rest.skip = {
     'student':'ALL',//跳过 student 所有的API
-    'school': 'GET,GETID'//跳过 school 的 GET 与 GETID,其它的 PUT,POST,DELETE 正常执行。
+    'school': 'GET,GETID'//跳过 school 的 GET 与 GETID,其它的 PUT,POST,DELETE 正常返回结果。
 }
 
 GET获取 school 文档
