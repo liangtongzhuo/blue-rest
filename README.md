@@ -6,7 +6,7 @@
 npm install "ltz-rest" --save
 ```
 
->依赖 mongoose 注册模型，两句实现 rest API
+依赖 mongoose 注册模型，两句实现 rest API
 
 ```
 //1.引入框架
@@ -16,7 +16,7 @@ app.use('/', rest);
 ```
 
 
-- 中间件自动生成： restful的约定风格API
+ 中间件自动生成： restful的约定风格API
 
 
 URL | 	HTTP | 功能
