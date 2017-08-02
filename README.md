@@ -6,7 +6,7 @@
 npm install "ltz-rest" --save
 ```
 
-依赖 mongoose 注册模型，两句实现 rest API
+>依赖 mongoose 注册模型，两句实现 rest API
 
 ```
 //1.引入框架
