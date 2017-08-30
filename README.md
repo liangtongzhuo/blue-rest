@@ -2,6 +2,19 @@
 
 ### 前言
 
+中间件自动生成： restful的约定风格API
+
+
+URL | 	HTTP | 功能
+----|------|----
+/tab | POST  | 创建对象
+/tab | GET  | 查询对象
+/tab/objectId | GET  | 获取对象
+/tab/objectId | PUT  | 更新对象
+/tab/objectId | DELETE  | 删除对象
+
+### 安装
+
 ```
 npm install "ltz-rest" --save
 ```
@@ -14,19 +27,6 @@ const rest = require('ltz-rest');
 app.use('/', rest);
 
 ```
-
-
- 中间件自动生成： restful的约定风格API
-
-
-URL | 	HTTP | 功能
-----|------|----
-/tab | POST  | 创建对象
-/tab | GET  | 查询对象
-/tab/objectId | GET  | 获取对象
-/tab/objectId | PUT  | 更新对象
-/tab/objectId | DELETE  | 删除对象
-
 
 ---
 ### 一、详情使用
