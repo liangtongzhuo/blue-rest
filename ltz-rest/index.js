@@ -49,7 +49,7 @@ router.route('/:tab/:objectid')
         if (skipMid(req, res, next, 'DELETE')){
             return;
         }
-        rest.putId(req, res, next);
+        rest.deleteId(req, res, next);
     });
 
 //是否跳过中间件
