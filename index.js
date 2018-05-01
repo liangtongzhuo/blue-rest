@@ -1,4 +1,4 @@
 'use strict';
 
-const rest = require('./ltz-rest/index.js');
+const rest = require('./lib/index.js');
 module.exports = rest;
