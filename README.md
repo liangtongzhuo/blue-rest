@@ -227,9 +227,11 @@ http://localhost:3000/school/592a33bf1b84a41131db2f55
 ```
 
 ---
+- 增加不严格模式，不写 model 也可以创建表
+
 - 实现功能，配置是否跳过中间件。
 
-- 书写文档，并且发布NPM
+- 书写文档，发布 NPM。
 
 - 实现Population 
 
