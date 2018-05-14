@@ -2,32 +2,28 @@
 
 const mongoose = require('mongoose');
 const db = mongoose.connect('mongodb://127.0.0.1:27017/test');
-db.Promise = global.Promise;
+db.connection
+    .on('error', (error)=>{ console.log('mongoError', error)})
+    .on('disconnected', () => console.log('mongo disconnected'))
+    .once('open', () => console.log('mongo start'));
 
-db.connection.on('error', function(error) {
-    console.log('___db：error');
-});
-
-db.connection.on('open', function() {
-    console.log('___db:open');
-});
 
 const express = require('express');
 const app = express();
 
 //1.引入框架
-const rest = require('../ltz-rest');
+const rest = require('../index.js');
 app.use('/', rest);
 
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
     //将异常堆栈输出，方便开发调试
     res.json({
         'error': err
     });
 });
 
-app.listen(3000, function() {
-    console.log('___server start');
+app.listen(3000, function () {
+    console.log('server start');
 });
 
 
@@ -47,22 +43,15 @@ const student = {
         yuwen: Number
     }
 };
-
 mongoose.model('student', new Schema(student));
 
 const school = {
     title: String
 };
-
 mongoose.model('school', new Schema(school));
 
 
-//是否，跳过中间件。
 rest.skip = {
-    'student':'ALL',
-    'school': 'GET'
+    'student': 'ALL',//跳过 student 全部
+    'school': 'GET'//跳过 school GET 方法
 }
-
-app.use(function(req,res){
-    res.send('next');
-})
