@@ -14,7 +14,8 @@
     "restful",
     "api",
     "node",
-    "mongodb"
+    "mongodb",
+    "auto"
   ],
   "author": "liangtongzhuo",
   "bugs": {
