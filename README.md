@@ -1,4 +1,5 @@
-## Node 搭建的 Restful 的风格的 API 中间件，依赖于 Express 和 Mongoose
+## Node 搭建的 Restful 的风格的 API 中间件，依赖于 Express 和 Mongoose, 
+## npm「 ltz-rest 」停止维护，转移到 「 blue-rest 」
 
 ### 前言
 
@@ -16,14 +17,14 @@ URL | 	HTTP | 功能
 ### 安装
 
 ```
-npm install "ltz-rest" --save
+npm install "blue-rest" --save
 ```
 
 依赖 mongoose 注册模型，两句实现 rest API
 
 ```
 //1.引入框架
-const rest = require('ltz-rest');
+const rest = require('blue-rest');
 app.use('/', rest);
 
 ```
@@ -42,7 +43,7 @@ const express = require('express');
 const app = express();
 
 //1.引入框架
-const rest = require('ltz-rest');
+const rest = require('blue-rest');
 app.use('/', rest);
 
 app.listen(3000);
