@@ -1,9 +1,10 @@
 'use strict';
 
 const mongoose = require('mongoose');
-const db = mongoose.connect('mongodb://127.0.0.1:27017/test');
-db.connection
-    .on('error', (error)=>{ console.log('mongoError', error)})
+mongoose.connect('mongodb://127.0.0.1:27017/test');
+
+mongoose.connection
+    .on('error', (error) => { console.log('mongoError', error) })
     .on('disconnected', () => console.log('mongo disconnected'))
     .once('open', () => console.log('mongo start'));
 
