@@ -1,5 +1,6 @@
 ## Node 搭建的 Restful 的风格的 API 中间件，依赖于 Express 和 Mongoose, 
 ## npm「 ltz-rest 」停止维护，转移到 「 blue-rest 」
+## 不建议在正式服务上使用，如果你能理解全部代码逻辑请随意。
 
 ### 前言
 
