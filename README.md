@@ -24,7 +24,7 @@ npm install "blue-rest" --save
 依赖 mongoose 注册模型，两句实现 rest API
 
 ```
-//1.引入框架
+//1.引入zh
 const rest = require('blue-rest');
 app.use('/', rest);
 
@@ -43,7 +43,7 @@ const db = mongoose.connect('mongodb://127.0.0.1:27017/test');
 const express = require('express');
 const app = express();
 
-//1.引入框架
+//1.引入中间件
 const rest = require('blue-rest');
 app.use('/', rest);
 
