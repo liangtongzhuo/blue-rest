@@ -6,7 +6,6 @@
 
 中间件自动生成： restful的约定风格API
 
-
 URL | 	HTTP | 功能
 ----|------|----
 /tab | POST  | 创建对象
